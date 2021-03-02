@@ -36,3 +36,20 @@ function runEnter() {
         });
     });
 }
+
+var reset = d3.select("#reset");
+
+reset.on("click", runReset);
+
+function runReset() {
+    d3.event.preventDefault();
+    tbody.html("");
+
+    tableData.forEach((sighting) => {
+        var row = tbody.append("tr");
+        Object.entries(sighting).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
+}
